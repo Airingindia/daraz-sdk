@@ -5,7 +5,7 @@ module.exports = Object.freeze({
     'NEPAL': 'NEPAL'
   },
   GATEWAY: {
-    'NEPAL': 'api.daraz.com.np/rest'
+    'NEPAL': 'api.daraz.com.np/rest',
     AUTH: 'auth.daraz.com.np/rest',
   },
 })
