@@ -1,9 +1,9 @@
 // @flow
-'use strict'
+"use strict";
 
-import LazadaClient from 'src/LazadaClient'
-import type { Venture } from 'src/types/Common'
-import { VENTURE, GATEWAY } from 'src/LazadaClient/constants'
+import LazadaClient from "src/LazadaClient";
+import type { Venture } from "src/types/Common";
+import { VENTURE, GATEWAY } from "src/LazadaClient/constants";
 
 /**
  * Class representing an API interface
@@ -15,12 +15,12 @@ import { VENTURE, GATEWAY } from 'src/LazadaClient/constants'
  * @property {LazadaClient} client
  */
 class LazadaAPI {
-  _appKey: string
-  _appSecret: string
-  _countryCode: Venture
-  _accessToken: ?string
-  _gateway: string
-  _client: any
+  _appKey: string;
+  _appSecret: string;
+  _countryCode: Venture;
+  _accessToken: ?string;
+  _gateway: string;
+  _client: any;
 
   /**
    * LazadaAPI constructor
@@ -33,49 +33,52 @@ class LazadaAPI {
     appKey: string,
     appSecret: string,
     countryCode: Venture,
-    accessToken: ?string,
+    accessToken: ?string
   ) {
     if (!appKey) {
-      throw new Error('Missing appKey')
+      throw new Error("Missing appKey");
     } else {
-      this._appKey = appKey
+      this._appKey = appKey;
     }
     if (!appSecret) {
-      throw new Error('Missing appSecret')
+      throw new Error("Missing appSecret");
     } else {
-      this._appSecret = appSecret
+      this._appSecret = appSecret;
     }
     if (!countryCode) {
-      throw new Error('Missing countryCode')
+      throw new Error("Missing countryCode");
     } else {
-      this._countryCode = countryCode
+      this._countryCode = countryCode;
     }
 
     switch (countryCode) {
+      case VENTURE.NEPAL:
+        this._gateway = GATEWAY.NEPAL;
+        break;
       case VENTURE.SINGAPORE:
-        this._gateway = GATEWAY.SINGAPORE
-        break
+        this._gateway = GATEWAY.SINGAPORE;
+        break;
       case VENTURE.THAILAND:
-        this._gateway = GATEWAY.THAILAND
-        break
+        this._gateway = GATEWAY.THAILAND;
+        break;
       case VENTURE.MALAYSIA:
-        this._gateway = GATEWAY.MALAYSIA
-        break
+        this._gateway = GATEWAY.MALAYSIA;
+        break;
       case VENTURE.VIETNAM:
-        this._gateway = GATEWAY.VIETNAM
-        break
+        this._gateway = GATEWAY.VIETNAM;
+        break;
       case VENTURE.PHILIPPINES:
-        this._gateway = GATEWAY.PHILIPPINES
-        break
+        this._gateway = GATEWAY.PHILIPPINES;
+        break;
       case VENTURE.INDONESIA:
-        this._gateway = GATEWAY.INDONESIA
-        break
+        this._gateway = GATEWAY.INDONESIA;
+        break;
       default:
-        throw new Error('countryCode not supported')
+        throw new Error("countryCode not supported");
       // break
     }
-    this._client = LazadaClient // new LazadaClient(appKey, appSecret, countryCode)
-    this.accessToken = accessToken
+    this._client = LazadaClient; // new LazadaClient(appKey, appSecret, countryCode)
+    this.accessToken = accessToken;
   }
 
   /**
@@ -83,7 +86,7 @@ class LazadaAPI {
    * @return {string}
    */
   get appKey() {
-    return this._appKey
+    return this._appKey;
   }
 
   /**
@@ -91,7 +94,7 @@ class LazadaAPI {
    * @return {string}
    */
   get appSecret() {
-    return this._appSecret
+    return this._appSecret;
   }
 
   /**
@@ -99,7 +102,7 @@ class LazadaAPI {
    * @return {string}
    */
   get accessToken() {
-    return this._accessToken
+    return this._accessToken;
   }
 
   /**
@@ -110,8 +113,8 @@ class LazadaAPI {
    */
   set accessToken(token: ?string) {
     if (token) {
-      this._accessToken = token
-      this.client.accessToken = token
+      this._accessToken = token;
+      this.client.accessToken = token;
     }
   }
 
@@ -120,7 +123,7 @@ class LazadaAPI {
    * @return {string}
    */
   get gateway() {
-    return this._gateway
+    return this._gateway;
   }
 
   /**
@@ -131,7 +134,7 @@ class LazadaAPI {
    */
   set gateway(url: string) {
     if (url) {
-      this._gateway = url
+      this._gateway = url;
     }
   }
 
@@ -140,8 +143,8 @@ class LazadaAPI {
    * @return {LazadaClient}
    */
   get client() {
-    return this._client
+    return this._client;
   }
 }
 
-module.exports = LazadaAPI
+module.exports = LazadaAPI;
